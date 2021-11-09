@@ -15,7 +15,7 @@ let calculate_true_count = async (cards_remaining) =>{
     console.log(true_count)
     let bet = ((true_count) * initialBet)
     if (bet<0){
-        bet = 0
+        bet = 0 
     }
     console.log(bet)
     
@@ -91,11 +91,10 @@ let getAPI = async (deck_count) => {
     })  
 };
 
-
 document.addEventListener('DOMContentLoaded', function() {
 	// 1 We will query the API with longitude and latitude.
 	initialBet = 25
-    getAPI(3);
+    getAPI(6);
     // console.log(deckId)
     
 });

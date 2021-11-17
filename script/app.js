@@ -11,12 +11,16 @@ let calculate_true_count = async (cards_remaining) =>{
     const numberDecksLeft = cards_remaining/52
     console.log(count)
     console.log(numberDecksLeft)
-    const true_count = Math.round(count/numberDecksLeft);
+    let true_count = Math.round(count/numberDecksLeft);
     console.log(true_count)
-    let bet = ((true_count) * initialBet)
-    if (bet<0){
-        bet = 0 
+    // if (true_count == 0){
+    //     true_count = 1 
+    // }
+    if (true_count < 0){
+        true_count = 0
     }
+    let bet = ((true_count) * initialBet)
+    
     console.log(bet)
     
 }
@@ -39,33 +43,55 @@ let getCards = async (deckId) => {
         arrcards.push(card2["value"])
         console.log(arrcards) 
         // console.log(count)
-        if(arrHigh.includes(card1["value"])){
-            // console.log("+1")
-            count += 1
-        } 
-        else if(arrLow.includes(card1["value"])){
-            // console.log("-1")
-            count -= 1
-        } 
-        else if(arrNeutral.includes(card1["value"])){
-            // console.log("0")
-        } else{
-            console.log("something wrong happend")
+        var svg = card1["images"];
+        console.log(svg["png"])
+        var design = document.querySelector(".js-card1");
+        design.innerHTML = svg["png"];
+
+        for(const card of arrcards){
+            // console.log(card)
+            if(arrHigh.includes(card)){
+                // console.log("+1")
+                count += 1
+            } 
+            else if(arrLow.includes(card)){
+                // console.log("-1")
+                count -= 1
+            } 
+            else if(arrNeutral.includes(card)){
+                // console.log("0")
+            } else{
+                console.log("something wrong happend")
+            }
         }
+        arrcards = [];
+        // if(arrHigh.includes(card1["value"])){
+        //     // console.log("+1")
+        //     count += 1
+        // } 
+        // else if(arrLow.includes(card1["value"])){
+        //     // console.log("-1")
+        //     count -= 1
+        // } 
+        // else if(arrNeutral.includes(card1["value"])){
+        //     // console.log("0")
+        // } else{
+        //     console.log("something wrong happend")
+        // }
         
-        if(arrHigh.includes(card2["value"])){
-            // console.log("+1")
-            count += 1
-        } 
-        else if(arrLow.includes(card2["value"])){
-            // console.log("-1")
-            count -= 1
-        } 
-        else if(arrNeutral.includes(card2["value"])){
-            // console.log("0")
-        } else{
-            console.log("something wrong happend")
-        }
+        // if(arrHigh.includes(card2["value"])){
+        //     // console.log("+1")
+        //     count += 1
+        // } 
+        // else if(arrLow.includes(card2["value"])){
+        //     // console.log("-1")
+        //     count -= 1
+        // } 
+        // else if(arrNeutral.includes(card2["value"])){
+        //     // console.log("0")
+        // } else{
+        //     console.log("something wrong happend")
+        // }
         // console.log(count)
         // console.log(arrcards.length)
     } else{
@@ -94,7 +120,7 @@ let getAPI = async (deck_count) => {
 document.addEventListener('DOMContentLoaded', function() {
 	// 1 We will query the API with longitude and latitude.
 	initialBet = 25
-    getAPI(6);
+    getAPI(2);
     // console.log(deckId)
     
 });

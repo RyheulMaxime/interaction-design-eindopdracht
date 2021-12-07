@@ -4,25 +4,40 @@ const arrLow = ['2','3','4','5','6'];
 const arrNeutral = ['7','8','9'];
 var count = 0;
 var initialBet = 0;
+var ownCount = 0;
 
 const get = (url) => fetch(url).then((r) => r.json());
 
-let calculate_true_count = async (cards_remaining) =>{
-    const numberDecksLeft = cards_remaining/52
-    console.log(count)
-    console.log(numberDecksLeft)
-    let true_count = Math.round(count/numberDecksLeft);
-    console.log(true_count)
-    // if (true_count == 0){
-    //     true_count = 1 
-    // }
-    if (true_count < 0){
-        true_count = 0
+let calculate_true_count = (cards_remaining) =>{
+    if (cards_remaining!=0){
+        const numberDecksLeft = cards_remaining/52
+        console.log(count)
+        console.log(numberDecksLeft)
+        let true_count = Math.round(count/numberDecksLeft);
+        console.log(true_count)
+        // if (true_count == 0){
+        //     true_count = 1 
+        // }
+        if (true_count < 0){
+            true_count = 0
+        }
+        let bet = ((true_count) * initialBet)
+        
+        console.log(bet)
+    } else{
+        console.log("no cards remaining")
+    }  
+}
+
+const checkCount = () =>{
+    ownCount = document.querySelector(".js-count").value;
+    console.log(ownCount)
+    if(ownCount==count){
+        console.log("correct")
+    } else if(ownCount!=count){
+        console.log("Wrong")
     }
-    let bet = ((true_count) * initialBet)
-    
-    console.log(bet)
-    
+
 }
 
 let getCards = async (deckId) => {
@@ -46,17 +61,22 @@ let getCards = async (deckId) => {
         var svg = card1["images"];
         console.log(svg["png"])
         var design = document.querySelector(".js-card1");
-        design.innerHTML = svg["png"];
+        design.innerHTML = `<img src="${svg["png"]}" class="c-card"></img>`;
+        
+        var svg2 = card2["images"];
+        // console.log(svg["png"])
+        var design2 = document.querySelector(".js-card2");
+        design2.innerHTML = `<img src="${svg2["png"]}" class="c-card" height="310px"></img>`;
 
         for(const card of arrcards){
             // console.log(card)
             if(arrHigh.includes(card)){
                 // console.log("+1")
-                count += 1
+                count -= 1
             } 
             else if(arrLow.includes(card)){
                 // console.log("-1")
-                count -= 1
+                count += 1
             } 
             else if(arrNeutral.includes(card)){
                 // console.log("0")
@@ -65,55 +85,32 @@ let getCards = async (deckId) => {
             }
         }
         arrcards = [];
-        // if(arrHigh.includes(card1["value"])){
-        //     // console.log("+1")
-        //     count += 1
-        // } 
-        // else if(arrLow.includes(card1["value"])){
-        //     // console.log("-1")
-        //     count -= 1
-        // } 
-        // else if(arrNeutral.includes(card1["value"])){
-        //     // console.log("0")
-        // } else{
-        //     console.log("something wrong happend")
-        // }
-        
-        // if(arrHigh.includes(card2["value"])){
-        //     // console.log("+1")
-        //     count += 1
-        // } 
-        // else if(arrLow.includes(card2["value"])){
-        //     // console.log("-1")
-        //     count -= 1
-        // } 
-        // else if(arrNeutral.includes(card2["value"])){
-        //     // console.log("0")
-        // } else{
-        //     console.log("something wrong happend")
-        // }
-        // console.log(count)
-        // console.log(arrcards.length)
+        calculate_true_count(drawesponse["remaining"]);
     } else{
         console.log(count)
         console.log("no cards left")
     }
-    calculate_true_count(drawesponse["remaining"] )
 } 
 
 let getAPI = async (deck_count) => {
-	// Eerst bouwen we onze url op
+	
 	const endPoint = `https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=${deck_count}`
-	// Met de fetch API proberen we de data op te halen.
-	console.log(endPoint)
+
+	// console.log(endPoint)
     const deckResponse = await get(endPoint);
 	console.log(deckResponse)
-	// Als dat gelukt is, gaan we naar onze showResult functie.
 	const deckId = deckResponse["deck_id"];
-    console.log(deckId)
+    // console.log(deckId)
     const deck =  document.querySelector(".js-button")
     deck.addEventListener("click",function(){
         getCards(deckId)
+    })  
+    
+    
+
+    const check =  document.querySelector(".js-check")
+    check.addEventListener("click",function(){
+        checkCount();
     })  
 };
 

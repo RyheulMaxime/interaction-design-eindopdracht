@@ -4,17 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>How to count cards</title>
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/test.png"> -->
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/screen.css">
+    
     <script src="./script/app.js"></script>
 </head>
 <body>
-    <p class="u-mb-md">
-        <!-- Button -->
-        <button class="o-button-reset c-button js-button">new cards</button>
-    </p>
-    <div class="js-card1"></div>
-    <div class="js-card2"></div>
+    <section class="o-row ">
+        <div class="o-row-item o-grid">
+            <h1 class="c-title">
+                How To Count Cards
+            </h1>
+            <div class="c-cards">
+                <p class="c-card--deck">
+                    <button class="c-button js-button">
+                    <img class="c-deck" src="./img/Playing Cards Back Red.png" alt="the back of a deck of cars">
+                </button>
+        
+                </p>
+                <div class="js-card1 c-card__left"></div>
+                <div class="js-card2 c-card__right"></div>
+                <div class="c-count">
+                    <label for="count">What is the current count</label>
+                    <input type="number" class="js-count c-own--count" name="Total Count" id="count">
+                </div>
+                <div>
+                    <input type="submit" name="check count" id="checkcount" value="Check Count" class="js-check">
+                </div>
+            </div>
+            <div class="c-explanation">
+                <div class="c-explanation--part">
+                    <h3 class="c-explanation--part__title">
+                        How to count cards
+                    </h3>
+                    <p class=".c-explanation--part__text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, saepe cupiditate alias temporibus hic ex, amet fuga assumenda commodi excepturi cum? Omnis qui officiis eveniet, laudantium error voluptates eius non!
+                    </p>
+                </div>
+                <div class="c-explanation--part">
+                    <h3 class="c-explanation--part__title">
+                        How to adjust your bet
+                    </h3>
+                    <p class=".c-explanation--part__text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit illum rem consectetur iste vero natus repudiandae modi autem inventore recusandae sequi corporis architecto eius est sit, hic veniam maiores aperiam?         
+                    </p>
+                </div>
+            </div>
+            <!-- <div class="js-card3"><img src="./img/cards/7C.svg" class="c-card"></div>
+            <div class="js-card4"><img src="./img/cards/2H.svg" class="c-card"></div> -->
+        </div>
+    </section>
+    
 </body>
 </html>

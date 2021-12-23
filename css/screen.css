@@ -379,12 +379,18 @@ input::placeholder {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: var(--global-whitespace-md);
+    
 }
 
+.c-info-infoCount{
+    justify-self:end;
+}
 
 .c-info-count{
     display: flex;
+    gap: var(--global-whitespace-sm);
     justify-self:end;
+    margin-bottom: var(--global-whitespace-sm);
 }
 
 .c-info-count__input{
@@ -392,7 +398,7 @@ input::placeholder {
     background-color: var(--global-color-alpha);
     color: white;
     height: 2rem;
-    margin-left: var(--global-whitespace-sm);
+    /* margin-left: var(--global-whitespace-sm); */
     
 }
 
@@ -406,6 +412,11 @@ input::placeholder {
     justify-content: center;
     margin-bottom: var(--global-whitespace-sm);
 
+}
+
+.c-info-count__correction{
+    display: flex;
+    justify-content: center;
 }
 
 /*
@@ -442,19 +453,21 @@ input::placeholder {
     transform: rotate(360deg);
 }
 
-.svg-clicked .svg-wrong{
-    transition: transform 1.5s;
-    transform: rotate(360deg);
-}
-
 .is-wrong-svg  .svg-wrong{
     opacity: 1;
     width: 24px;
     height: 24px;
    
-    transition: transform 1.5s , opacity 0.4s;
+    /* transition: transform 1.5s , opacity 0.4s;
+    transform: rotate(360deg); */
+}
+
+.svg-clicked .svg-wrong{
+    transition: transform 1.5s;
     transform: rotate(360deg);
 }
+
+
 
 /*
     Component: deck

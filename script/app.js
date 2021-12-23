@@ -102,8 +102,7 @@ const checkCount = async () =>{
     ownCount = document.querySelector(".js-count").value;
     var button = document.querySelector(".js-info-check");
     var svg = document.querySelector(".js-svg");
-    var svgCorrect = document.querySelector(".js-svg-correct");
-    var svgWrong = document.querySelector(".js-svg-wrong");
+    var realCount = document.querySelector(".js-real-count");
     // console.log(ownCount)
     if(ownCount==count){
         console.log("correct")
@@ -113,12 +112,14 @@ const checkCount = async () =>{
         svg.classList.remove("is-wrong-svg");
         // svg.classList.add("svg-clicked");
         // svg.classList.remove("svg-clicked");
+        realCount.innerHTML = ``
     } else if(ownCount!=count){
         console.log("Wrong")
         button.classList.add("is-wrong");
         // svgWrong.classList.add("is-wrong");
         // svgCorrect.classList.add("is-wrong");
         svg.classList.add("is-wrong-svg");
+        realCount.innerHTML = `The actual count was: ${count}`
     }
     await new Promise(r => setTimeout(r, 250));
     svg.classList.add("svg-clicked");

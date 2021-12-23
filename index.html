@@ -31,33 +31,36 @@
                 
             </div>
             <div class="c-info">
-                <div class="c-info-count">
-                    <label for="count">What is the current count</label>
-                    <input type="number" class="js-count c-info-count__input" name="Total Count" id="count" value="0">
-                    <div class=" js-svg">
-                        <svg class="js-svg-correct svg-correct" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+                <div class="c-info-infoCount">
+                    <div class="c-info-count">
+                        <label for="count">What is the current count</label>
+                        <input type="number" class="js-count c-info-count__input" name="Total Count" id="count" value="0">
+                        <div class=" js-svg">
+                            <svg class="js-svg-correct svg-correct" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+                                <defs>
+                                <clipPath id="clip-path">
+                                    <rect width="24" height="24" fill="none"/>
+                                </clipPath>
+                                </defs>
+                                <g id="ic_check" clip-path="url(#clip-path)">
+                                <path stroke="#fff" fill="#12FF12" id="path" d="M9,16.2,4.8,12,3.4,13.4,9,19,21,7,19.6,5.6Z" fill-rule="evenodd" opacity="0.54"/>
+                                </g>
+                            </svg>
+                            
+                            <svg class="svg-wrong js-svg-wrong" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
                             <defs>
-                              <clipPath id="clip-path">
+                                <clipPath id="clip-path">
                                 <rect width="24" height="24" fill="none"/>
-                              </clipPath>
+                                </clipPath>
                             </defs>
-                            <g id="ic_check" clip-path="url(#clip-path)">
-                              <path stroke="#fff" fill="#12FF12" id="path" d="M9,16.2,4.8,12,3.4,13.4,9,19,21,7,19.6,5.6Z" fill-rule="evenodd" opacity="0.54"/>
+                            <g id="ic_expand_close" clip-path="url(#clip-path)">
+                                <path stroke="#fff" fill="#D12721" id="path" d="M19,6.4,17.6,5,12,10.6,6.4,5,5,6.4,10.6,12,5,17.6,6.4,19,12,13.4,17.6,19,19,17.6,13.4,12Z" fill-rule="evenodd" opacity="0.54"/>
                             </g>
-                        </svg>
+                            </svg>
+                        </div>
                         
-                        <svg class="svg-wrong js-svg-wrong" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
-                        <defs>
-                            <clipPath id="clip-path">
-                            <rect width="24" height="24" fill="none"/>
-                            </clipPath>
-                        </defs>
-                        <g id="ic_expand_close" clip-path="url(#clip-path)">
-                            <path stroke="#fff" fill="#D12721" id="path" d="M19,6.4,17.6,5,12,10.6,6.4,5,5,6.4,10.6,12,5,17.6,6.4,19,12,13.4,17.6,19,19,17.6,13.4,12Z" fill-rule="evenodd" opacity="0.54"/>
-                        </g>
-                        </svg>
                     </div>
-                    
+                    <p class="c-info-count__correction js-real-count"></p>
                 </div>
                 <div class="">
                     <button name="check count" id="checkcount" class="js-info-check o-button-reset c-button">Check Count</button>

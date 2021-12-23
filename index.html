@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/screen.css">
     
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./script/app.js"></script>
 </head>
 <body>
@@ -21,19 +22,25 @@
             </h1>
             <div class="c-cards">
                 <p class="c-card--deck">
-                    <button class="c-button js-button">
-                    <img class="c-deck" src="./img/Playing Cards Back Red.png" alt="the back of a deck of cars">
-                </button>
-        
+                    <button class="c-button-deck js-button">
+                        <img class="c-deck" src="./img/Playing Cards Back Red.png" alt="the back of a deck of cars">
+                    </button>
                 </p>
                 <div class="js-card1 c-card__left"></div>
                 <div class="js-card2 c-card__right"></div>
-                <div class="c-count">
+                
+            </div>
+            <div class="c-info">
+                <div class="c-info-count">
                     <label for="count">What is the current count</label>
-                    <input type="number" class="js-count c-own--count" name="Total Count" id="count">
+                    <input type="number" class="js-count c-info-count__input" name="Total Count" id="count" value="0">
                 </div>
-                <div>
-                    <input type="submit" name="check count" id="checkcount" value="Check Count" class="js-check">
+                <div class="">
+                    <button name="check count" id="checkcount" class="js-info-check is-wrong o-button-reset c-button">Check Count</button>
+                </div>
+                <div class="c-info-chart">
+                    <h4 class="c-info-chart__title">How mutch should you bet with this count:</h4>
+                    <canvas class="js-graph" width="16" height="1"></canvas>
                 </div>
             </div>
             <div class="c-explanation">
@@ -51,11 +58,12 @@
                     </h3>
                     <p class=".c-explanation--part__text">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit illum rem consectetur iste vero natus repudiandae modi autem inventore recusandae sequi corporis architecto eius est sit, hic veniam maiores aperiam?         
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro eos voluptate odio illo nobis! Porro quia quasi, inventore sapiente repudiandae dignissimos voluptates placeat, sed illum blanditiis voluptate perferendis alias molestiae.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, aliquam molestiae, nesciunt neque eligendi ea sunt, odit itaque a sapiente explicabo consequuntur fuga nulla corrupti illo autem obcaecati non! Earum.
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta, necessitatibus? Error sequi dolores illum vel repellat voluptate, minima sit, non architecto iste quaerat a ut molestiae? Veniam aliquam commodi dolore!
                     </p>
                 </div>
             </div>
-            <!-- <div class="js-card3"><img src="./img/cards/7C.svg" class="c-card"></div>
-            <div class="js-card4"><img src="./img/cards/2H.svg" class="c-card"></div> -->
         </div>
     </section>
     

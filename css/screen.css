@@ -409,6 +409,54 @@ input::placeholder {
 }
 
 /*
+    Component: svg
+    ---
+    Class to put on svg's
+*/
+.svg-correct{
+    opacity: 1;
+    /* transition: transform 1.5s, opacity 0.4s; */
+    transition: opacity 0.4s;
+    width: 24px;
+    height: 24px;
+    
+    
+}
+
+.svg-wrong{
+   opacity: 0;
+   width: 0;
+   height: 0;
+   
+}
+
+.is-wrong-svg  .svg-correct{
+    opacity: 0;
+    width: 0;
+    height: 0;
+    transform: rotate(360deg);
+}
+
+.svg-clicked .svg-correct{
+    transition: transform 1.5s;
+    transform: rotate(360deg);
+}
+
+.svg-clicked .svg-wrong{
+    transition: transform 1.5s;
+    transform: rotate(360deg);
+}
+
+.is-wrong-svg  .svg-wrong{
+    opacity: 1;
+    width: 24px;
+    height: 24px;
+   
+    transition: transform 1.5s , opacity 0.4s;
+    transform: rotate(360deg);
+}
+
+/*
     Component: deck
     ---
     website button deck
@@ -453,8 +501,6 @@ input::placeholder {
     ---
     Class to put on form buttons or
 */
-
-
 
 
 .c-button {    

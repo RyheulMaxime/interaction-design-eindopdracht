@@ -63,7 +63,6 @@ options: {
 };
 
 
-
 const get = (url) => fetch(url).then((r) => r.json());
 
 let calculate_true_count = (cards_remaining) =>{
@@ -99,17 +98,33 @@ const drawChart = (bedrag) =>{
     myChart.update();
 }
 
-const checkCount = () =>{
+const checkCount = async () =>{
     ownCount = document.querySelector(".js-count").value;
     var button = document.querySelector(".js-info-check");
+    var svg = document.querySelector(".js-svg");
+    var svgCorrect = document.querySelector(".js-svg-correct");
+    var svgWrong = document.querySelector(".js-svg-wrong");
     // console.log(ownCount)
     if(ownCount==count){
         console.log("correct")
+        // svgWrong.classList.remove("is-wrong");
         button.classList.remove("is-wrong");
+        // svgCorrect.classList.remove("is-wrong");
+        svg.classList.remove("is-wrong-svg");
+        // svg.classList.add("svg-clicked");
+        // svg.classList.remove("svg-clicked");
     } else if(ownCount!=count){
         console.log("Wrong")
         button.classList.add("is-wrong");
+        // svgWrong.classList.add("is-wrong");
+        // svgCorrect.classList.add("is-wrong");
+        svg.classList.add("is-wrong-svg");
     }
+    await new Promise(r => setTimeout(r, 250));
+    svg.classList.add("svg-clicked");
+    await new Promise(r => setTimeout(r, 1500));
+    console.log('clicked')
+    svg.classList.remove("svg-clicked");
 }
 
 let getCards = async (deckId) => {

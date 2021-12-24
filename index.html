@@ -21,53 +21,61 @@
                 How To Count Cards
             </h1>
             <div class="c-cards">
-                <p class="c-card--deck">
-                    <button class="c-button-deck js-button">
-                        <img class="c-deck" src="./img/Playing Cards Back Red.png" alt="the back of a deck of cars">
-                    </button>
-                </p>
+                <div class="c-card--deck">
+                    <div class=" c-button-new-deck">
+                        <button class="o-button-reset c-button js-button-new-deck">New Deck of Cards</button>
+                    </div>
+                    <div class="c-card--deck-image js-deck">
+                        <button class="c-button-deck js-button">
+                            <img class="c-deck" src="./img/Playing Cards Back Red.png" alt="the back of a deck of cars">
+                        </button>
+                    </div>
+                    
+                </div>
+                
                 <div class="js-card1 c-card__left"></div>
                 <div class="js-card2 c-card__right"></div>
                 
             </div>
             <div class="c-info">
-                <div class="c-info-infoCount">
-                    <div class="c-info-count">
-                        <label for="count">What is the current count</label>
-                        <input type="number" class="js-count c-info-count__input" name="Total Count" id="count" value="0">
-                        <div class=" js-svg">
-                            <svg class="js-svg-correct svg-correct" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+                <div class="c-info-infoCount u-grid-column-2-bp2">
+                    <div class="c-info-count ">
+                        <label class="c-info-count__lable" for="count">What is the current count:</label>
+                        <div class="c-info-count__input ">
+                            <input type="number" class="js-count c-info-count__input-number" name="Total Count" id="count" value="0">
+                            <div class=" js-svg c-svg">
+                                <svg class="js-svg-correct c-svg-correct" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+                                    <defs>
+                                    <clipPath id="clip-path">
+                                        <rect width="24" height="24" fill="none"/>
+                                    </clipPath>
+                                    </defs>
+                                    <g id="ic_check" clip-path="url(#clip-path)">
+                                    <path stroke="#fff" fill="#12FF12" id="path" d="M9,16.2,4.8,12,3.4,13.4,9,19,21,7,19.6,5.6Z" fill-rule="evenodd" opacity="0.54"/>
+                                    </g>
+                                </svg>
+                                
+                                <svg class="c-svg-wrong js-svg-wrong" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
                                 <defs>
-                                <clipPath id="clip-path">
+                                    <clipPath id="clip-path">
                                     <rect width="24" height="24" fill="none"/>
-                                </clipPath>
+                                    </clipPath>
                                 </defs>
-                                <g id="ic_check" clip-path="url(#clip-path)">
-                                <path stroke="#fff" fill="#12FF12" id="path" d="M9,16.2,4.8,12,3.4,13.4,9,19,21,7,19.6,5.6Z" fill-rule="evenodd" opacity="0.54"/>
+                                <g id="ic_expand_close" clip-path="url(#clip-path)">
+                                    <path stroke="#fff" fill="#D12721" id="path" d="M19,6.4,17.6,5,12,10.6,6.4,5,5,6.4,10.6,12,5,17.6,6.4,19,12,13.4,17.6,19,19,17.6,13.4,12Z" fill-rule="evenodd" opacity="0.54"/>
                                 </g>
-                            </svg>
-                            
-                            <svg class="svg-wrong js-svg-wrong" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
-                            <defs>
-                                <clipPath id="clip-path">
-                                <rect width="24" height="24" fill="none"/>
-                                </clipPath>
-                            </defs>
-                            <g id="ic_expand_close" clip-path="url(#clip-path)">
-                                <path stroke="#fff" fill="#D12721" id="path" d="M19,6.4,17.6,5,12,10.6,6.4,5,5,6.4,10.6,12,5,17.6,6.4,19,12,13.4,17.6,19,19,17.6,13.4,12Z" fill-rule="evenodd" opacity="0.54"/>
-                            </g>
-                            </svg>
+                                </svg>
+                            </div>
                         </div>
-                        
                     </div>
                     <p class="c-info-count__correction js-real-count"></p>
                 </div>
-                <div class="">
+                <div class="u-grid-column-2-bp2 c-info-button">
                     <button name="check count" id="checkcount" class="js-info-check o-button-reset c-button">Check Count</button>
                 </div>
                 <div class="c-info-chart">
                     <h4 class="c-info-chart__title">How mutch should you bet with this count:</h4>
-                    <canvas class="js-graph" width="16" height="1"></canvas>
+                    <canvas class="c-graph js-graph" width="20" height="2"></canvas>
                 </div>
             </div>
             <!-- <div class="c-explanation">

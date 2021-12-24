@@ -6,6 +6,7 @@ var count = 0;
 var initialBet = 0;
 var ownCount = 0;
 var myChart;
+var deckId;
 
 const labels = [
     ''
@@ -36,10 +37,10 @@ options: {
             },
             
             min:0,
-            max: 25,
+            max: 20,
             ticks: {
                 color: 'white',
-                stepSize: 1  
+                stepSize: 2 
             }
         },
         y:{
@@ -187,25 +188,45 @@ let getAPI = async (deck_count) => {
 	// console.log(endPoint)
     const deckResponse = await get(endPoint);
 	console.log(deckResponse)
-	const deckId = deckResponse["deck_id"];
-    // console.log(deckId)
-    const deck =  document.querySelector(".js-button")
-    deck.addEventListener("click",function(){
-        getCards(deckId)
-    })  
-    
-    
+	deckId = deckResponse["deck_id"];
 
-    const check =  document.querySelector(".js-info-check")
-    check.addEventListener("click",function(){
-        checkCount();
-    })  
+    count = 0;
+    const deck =  document.querySelector(".js-deck")
+    
+    var design = document.querySelector(".js-card1");
+    design.innerHTML = ``;
+    
+    var design2 = document.querySelector(".js-card2");
+    design2.innerHTML = ``;
+
+    deck.classList.add("new-deck");
+    await new Promise(r => setTimeout(r, 1500));
+    console.log('new deck')
+    deck.classList.remove("new-deck");
+    
+    
 };
 
 document.addEventListener('DOMContentLoaded', function() {
 	// 1 We will query the API with longitude and latitude.
 	initialBet = 1;
     getAPI(6);
+
+    const newDeck =  document.querySelector(".js-button-new-deck")
+    newDeck.addEventListener("click",function(){
+        getAPI(6)
+    })  
+
+    const deck =  document.querySelector(".js-button")
+    deck.addEventListener("click",function(){
+        getCards(deckId)
+    })  
+
+    const check =  document.querySelector(".js-info-check")
+    check.addEventListener("click",function(){
+        checkCount();
+    })  
+
 
     graph = document.querySelector(".js-graph").getContext('2d');
 

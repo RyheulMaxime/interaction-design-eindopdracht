@@ -28,6 +28,7 @@
     --global-color-button-wrong-light:#EB160E;
 
     /* Shadows */
+    --global-input-focus-boxShadow: 0 2px 3px var(--global-color-neutral-x-light);
 
     /* border */
     --global-borderWidth: 2px;
@@ -272,10 +273,15 @@ input::placeholder {
 .o-grid{
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 4rem 720px 12rem 25em ;
+    grid-template-rows: 4rem 720px 15rem 25em ;
     gap: var(--global-whitespace-md);
 }
 
+@media (max-width: 576px) {
+    .o-grid{
+        grid-template-rows: 4rem 400px 15rem 25em;
+    }
+}
 
 /*
     Object: Button reset
@@ -319,6 +325,13 @@ input::placeholder {
  .c-title{
      /* color: white; */
      justify-self: center;
+     /* font-weight: 600; */
+}
+
+@media (max-width: 576px) {
+    .c-title{
+        font-size: 1.5rem;
+    }
 }
 
 
@@ -328,10 +341,19 @@ input::placeholder {
     website cards + counting of cards
 */ 
 
+.c-cards{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: var(--global-whitespace-md);
+}
+
 .c-card{
     height: 310px;  /* 19.375rem */
     width: 220px;   /* 13.75rem */
 }
+
+
 
 .c-card__left{
     justify-self:end;
@@ -345,20 +367,24 @@ input::placeholder {
     grid-row: 2;
 }
 
-.c-cards{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-gap: var(--global-whitespace-md);
-}
+
+
 
 .c-card--deck{
     grid-column:1/3;
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+.c-card--deck-image{
     display: flex;
     justify-content: center;
     margin-bottom: 0;
-    box-sizing: 5px 10px var(--global-color-alpha-dark);
+}
 
+.c-button-new-deck{
+    display: flex;
+    justify-content: center;
 }
 
 .c-deck{
@@ -367,6 +393,18 @@ input::placeholder {
     height: 310px;
 }
 
+@media (max-width: 576px) {
+    
+    .c-card{
+        height: 154px;  /* 19.375rem */
+        width: 110px;   /* 13.75rem */
+    }
+
+    .c-deck{
+        height: 155px;
+    }
+
+}
 
 /*
     Component: info
@@ -394,10 +432,17 @@ input::placeholder {
 }
 
 .c-info-count__input{
+    display: flex;      
+    gap: var(--global-whitespace-sm);
+    justify-content: center;
+}
+
+.c-info-count__input-number{
     /* color: white; */
     background-color: var(--global-color-alpha);
     color: white;
     height: 2rem;
+    justify-self: center;
     /* margin-left: var(--global-whitespace-sm); */
     
 }
@@ -417,6 +462,58 @@ input::placeholder {
 .c-info-count__correction{
     display: flex;
     justify-content: center;
+    margin: 0;
+}
+
+@media (max-width: 576px) {
+    .c-info{
+        grid-template-rows: 8rem 3rem 10rem;
+    }
+    
+    .c-info-infoCount{
+        grid-template-rows: 5rem 2rem;
+    }
+
+    .c-info-count{
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        justify-self: center;
+        /* grid-template-rows: repeat(2, 1fr); */
+    }
+
+    .c-info-count__lable{
+        justify-self: center;
+    }
+
+    
+
+}
+
+
+@media (max-width: 992px) {
+    .c-info{
+        
+    }
+    
+    .c-info-infoCount{
+        display: grid;
+        grid-template-rows: rem 2rem;
+        gap: 1rem;
+        justify-self: center;
+        
+    }
+
+    .c-info-count{
+        margin-bottom: 0;
+
+    } 
+
+    .c-info-button{
+        justify-self: center;
+    }
+    
+    
+
 }
 
 /*
@@ -424,7 +521,12 @@ input::placeholder {
     ---
     Class to put on svg's
 */
-.svg-correct{
+
+.c-svg{
+    height: 0;
+}
+
+.c-svg-correct{
     opacity: 1;
     /* transition: transform 1.5s, opacity 0.4s; */
     transition: opacity 0.4s;
@@ -434,26 +536,26 @@ input::placeholder {
     
 }
 
-.svg-wrong{
+.c-svg-wrong{
    opacity: 0;
    width: 0;
    height: 0;
    
 }
 
-.is-wrong-svg  .svg-correct{
+.is-wrong-svg  .c-svg-correct{
     opacity: 0;
     width: 0;
     height: 0;
     transform: rotate(360deg);
 }
 
-.svg-clicked .svg-correct{
+.svg-clicked .c-svg-correct{
     transition: transform 1.5s;
     transform: rotate(360deg);
 }
 
-.is-wrong-svg  .svg-wrong{
+.is-wrong-svg  .c-svg-wrong{
     opacity: 1;
     width: 24px;
     height: 24px;
@@ -462,7 +564,7 @@ input::placeholder {
     transform: rotate(360deg); */
 }
 
-.svg-clicked .svg-wrong{
+.svg-clicked .c-svg-wrong{
     transition: transform 1.5s;
     transform: rotate(360deg);
 }
@@ -503,10 +605,15 @@ input::placeholder {
 */ 
 
 .c-button-deck{
-    background-color: var(--global-color-alpha);
+    background-color: transparent;
     border: none;
-    height: 310px;  /* 19.375rem */
-    width: 220px;   /* 13.75rem */
+    /* height: 310px;  19.375rem */
+    /* width: 220px;   13.75rem */
+}
+
+.new-deck .c-button-deck{
+    transition: transform 1.5s;
+    transform: rotate(360deg);
 }
 
 /*
@@ -543,6 +650,7 @@ input::placeholder {
 .c-button:hover {
     border-color: var(--button-borderColor);
     background-color: var(--button-hover-backgroundColor);
+    box-shadow: var(--button-focus-boxShadow);
 }
 
 .c-button:focus {
@@ -554,7 +662,7 @@ input::placeholder {
 .c-button:active {
     background-color: var(--button-active-backgroundColor);
     border-color: var(--button-borderColor);
-    box-shadow: var(--button-active-boxShadow, 0);
+    box-shadow: var(--button-focus-boxShadow, 0);
 }
 
 
@@ -677,7 +785,7 @@ input::placeholder {
     Utility classes to adjust items to grid
 */
 
-@media (min-width: 992px){
+@media (max-width: 992px){
     .u-grid-column-2-bp2{
         grid-column: span 2;
     }
@@ -717,9 +825,11 @@ input::placeholder {
 No media query since this is the default in mobile first design
 */
 
-/* Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {}
-*/
+/* Small devices (landscape phones, 576px and up) */
+/* @media (min-width: 576px) {
+    
+} */
+
 
 /* Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {}
